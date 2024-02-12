@@ -8,6 +8,7 @@ plugins {
     kotlin("jvm") version "1.9.22"
     id("io.ktor.plugin") version "2.3.8"
     id("com.github.gmazzo.buildconfig") version "5.3.5"
+    kotlin("plugin.serialization") version "1.4.21"
 }
 
 group = "ua.pp.leonidius"
@@ -24,6 +25,7 @@ buildConfig {
     }
 
     buildConfigField("API_KEY", props.getProperty("API_KEY"))
+    buildConfigField("TOKEN", props.getProperty("TOKEN"))
 }
 
 application {
@@ -45,4 +47,12 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    // for c    lient
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
 }

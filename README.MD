@@ -1,0 +1,2 @@
+Create JAR  
+`./gradlew buildFatjar`
